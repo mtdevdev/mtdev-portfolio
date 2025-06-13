@@ -10,8 +10,7 @@ Feel free to check it out and follow along with my journey!
 ---
 
 <p align="center">
-  Created and refined by <strong>MTDev</strong>.
+  Created by <strong>MTDev</strong>.
   This project is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.  
-See the full license in the [LICENSE.md](./LICENSE.md) file.
 </p>
 
