@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const phrases = ["Desenvolvedor", "Artista", "Programador"];
     
-    // Updated with 'engine' property ('unity' or 'godot')
     const projectsDatabase = [
         {
             type: "game",
@@ -52,6 +51,18 @@ document.addEventListener("DOMContentLoaded", function () {
             youtubeId: "4aa4u11uUbw",
             links: [
                 { text: "Itch.io", url: "https://mtdeveloper.itch.io/galactic-paradox" },
+            ]
+        },
+
+        {
+            type: "AI",
+            title: "vismind",
+            date: "Agosto 2025",
+            description: "vismind, alimentado por AI e integrado com Gemini, cria visualizações musicais impressionantes adaptadas aos seus prompts.",
+            cover: "./Images/AIImages/vismindIcon.png",
+            youtubeId: "zBWID4tnm0A",
+            links: [
+                { text: "GitHub", url: "https://github.com/mtdevdev/vismind" },
             ]
         },
     ];
@@ -249,7 +260,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     if (document.querySelector('.gallery')) {
-        renderProjects();
+        renderProjects('game');
         setupFilterButtons();
     }
 });
