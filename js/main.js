@@ -4,27 +4,138 @@ document.addEventListener("DOMContentLoaded", function () {
     // STATE & DATA
     //================================================
 
-    const phrases = ["Developer", "Artist", "Programmer"];
+    const phrases = ["Desenvolvedor", "Artista", "Programador"];
     
+    // Updated with 'engine' property ('unity' or 'godot')
     const projectsDatabase = [
         {
             type: "game",
-            title: "Galactic Paradox",
-            date: "July 2024",
-            description: "A 2D game made in Godot that is set to the rhythm of music, in an 8-bit style. Made for a course project.",
-            cover: "./Images/GameImages/GalacticParadoxIcon.jpg",
+            title: "SPLINTERIS",
+            engine: "unity",
+            date: "Dezembro 2025",
+            description: "Jogo 3D de ação onde o jogador deve eliminar todos os inimigos controlando o tempo.",
+            cover: "./Images/GameImages/SplinterisIcon.jpg",
+            youtubeId: "eHYLQwSar_k",
             links: [
-                { text: "Itch", url: "https://mtdeveloper.itch.io/galactic-paradox" },
+                { text: "Itch.io", url: "https://mtdeveloper.itch.io/splinteris" },
+            ]
+        },
+                {
+            type: "game",
+            title: "Retro Rebound",
+            engine: "unity",
+            date: "Julho 2025",
+            description: "Arcade clássico 2D reimaginado com mecânicas diferenciadas.",
+            cover: "./Images/GameImages/retroreboundIcon.png",
+            youtubeId: "dOYl_4jf5Qk",
+            links: [
+                { text: "Itch.io", url: "https://mtdeveloper.itch.io/retro-rebound" },
+            ]
+        },
+        {
+            type: "game",
+            title: "Lost Orbs",
+            engine: "unity",
+            date: "Dezembro 2024",
+            description: "Jogo 2D onde o jogador deve coletar orbes perdidas, enquanto há um monstro aos arredores.",
+            cover: "./Images/GameImages/LostOrbsIcon.png",
+            youtubeId: "HW_5wGViEEM",
+            links: []
+        },
+        {
+            type: "game",
+            title: "Galactic Paradox",
+            engine: "godot",
+            date: "Julho 2024",
+            description: "Jogo 2D sincronizado com o ritmo da música, onde o jogador deve sobreviver, em estilo 8-bit.",
+            cover: "./Images/GameImages/GalacticParadoxIcon.jpg",
+            youtubeId: "4aa4u11uUbw",
+            links: [
+                { text: "Itch.io", url: "https://mtdeveloper.itch.io/galactic-paradox" },
             ]
         },
     ];
 
     //================================================
+    // MODAL FUNCTIONS
+    //================================================
+
+    const modal = document.getElementById("project-modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalVideo = document.getElementById("modal-video");
+    const modalDesc = document.getElementById("modal-description");
+    const modalLinks = document.getElementById("modal-links");
+    const closeModalBtn = document.getElementById("close-modal");
+
+    function openModal(project) {
+        modalTitle.textContent = project.title;
+        modalDesc.textContent = project.description;
+        
+        if (project.youtubeId) {
+            modalVideo.src = `https://www.youtube.com/embed/${project.youtubeId}?autoplay=1`;
+        } else {
+            modalVideo.src = "";
+        }
+        
+        modalLinks.innerHTML = "";
+        if (project.links) {
+            project.links.forEach(link => {
+                const a = document.createElement("a");
+                a.href = link.url;
+                a.target = "_blank";
+                a.className = "project-btn";
+                a.textContent = link.text;
+                modalLinks.appendChild(a);
+            });
+        }
+
+        modal.classList.add("active");
+    }
+
+    function closeModal() {
+        modal.classList.remove("active");
+        // Reset src to stop video playback immediately
+        modalVideo.src = "";
+    }
+
+    closeModalBtn.addEventListener("click", closeModal);
+    
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("active")) {
+            closeModal();
+        }
+    });
+
+    //================================================
     // CORE FUNCTIONS
     //================================================
 
-    // --- Section Navigation ---
-    function handleNavigation(navItems, sections) {
+    function getEngineIcon(engine) {
+        if (!engine) return '';
+        
+        const type = engine.toLowerCase();
+        
+        if (type === 'unity') {
+            return `<div class="engine-badge unity" title="Feito com Unity"><i class="fab fa-unity"></i></div>`;
+        } 
+        
+        if (type === 'godot') {
+            // Godot SVG (Since FontAwesome Free doesn't include it standard)
+            return `
+            <div class="engine-badge godot" title="Feito com Godot">
+                G
+            </div>`;
+        }
+
+        // Fallback for generic or other engines
+        return `<div class="engine-badge"><i class="fas fa-code"></i></div>`;
+    }
+
+    function handleNavigation(navItems) {
         let isTransitioning = false;
         
         navItems.forEach(item => {
@@ -41,13 +152,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     activeSection.style.opacity = "0";
                     setTimeout(() => {
                         activeSection.classList.remove("active");
-                        
                         targetSection.classList.add("active");
                         setTimeout(() => {
                             targetSection.style.opacity = "1";
                             isTransitioning = false;
-                        }, 10); // Short delay for the fade-in transition to trigger
-                    }, 500); // Matches CSS transition time
+                        }, 10);
+                    }, 500);
                 } else {
                     isTransitioning = false;
                 }
@@ -55,7 +165,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // --- Dynamic Text Typing Effect ---
     async function typePhrase(phrase, textElement, delay = 150) {
         for (let i = 0; i < phrase.length; i++) {
             textElement.textContent += phrase[i];
@@ -74,16 +183,15 @@ document.addEventListener("DOMContentLoaded", function () {
         while (true) { 
             for (let phrase of phrases) {
                 await typePhrase(phrase, textElement);
-                await new Promise(resolve => setTimeout(resolve, 2000)); // Pause after typing
+                await new Promise(resolve => setTimeout(resolve, 2000));
                 await erasePhrase(textElement);
             }
         }
     }
 
-    // --- Project Gallery Rendering ---
     function renderProjects(filter = 'all') {
         const gallery = document.querySelector('.gallery');
-        gallery.innerHTML = ''; // Clear the current gallery
+        gallery.innerHTML = ''; 
 
         const filteredProjects = filter === 'all'
             ? projectsDatabase
@@ -92,35 +200,25 @@ document.addEventListener("DOMContentLoaded", function () {
         filteredProjects.forEach((project, index) => {
             const projectCard = document.createElement('div');
             projectCard.className = `project-card ${project.type} fade-in`;
-            projectCard.style.animationDelay = `${index * 0.1}s`; // Staggered fade-in effect
+            projectCard.style.animationDelay = `${index * 0.1}s`;
+
+            // Get the engine icon HTML
+            const engineIconHTML = getEngineIcon(project.engine);
 
             let cardContent = `
                 <div class="cover">
+                    ${engineIconHTML}
                     <img src="${project.cover}" alt="${project.title}">
                 </div>
                 <div class="project-info">
                     <h3 class="project-title">${project.title}</h3>
                     <p class="project-date">${project.date}</p>
                     <p class="project-description">${project.description || '&nbsp;'}</p>
-            `; // Use non-breaking space if description is empty
-
-            if (project.type === 'music') {
-                cardContent += `
-                    <audio class="audio-player" controls>
-                        <source src="${project.audioSrc}" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
-                `;
-            } else if (project.type === 'game' && project.links) {
-                cardContent += `<div class="project-links">`;
-                project.links.forEach(link => {
-                    cardContent += `<a href="${link.url}" class="project-btn" target="_blank">${link.text}</a>`;
-                });
-                cardContent += `</div>`;
-            }
-
-            cardContent += `</div>`;
+                </div>
+            `;
+            
             projectCard.innerHTML = cardContent;
+            projectCard.addEventListener("click", () => openModal(project));
             gallery.appendChild(projectCard);
 
             setTimeout(() => projectCard.classList.add("visible"), 50);
@@ -139,24 +237,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     //================================================
-    // INITIALIZATION & EVENT LISTENERS
+    // INITIALIZATION
     //================================================
     
-    // Initialize navigation
     const navItems = document.querySelectorAll(".nav-item");
-    const sections = document.querySelectorAll("section");
-    handleNavigation(navItems, sections);
+    handleNavigation(navItems);
 
-    // Start the typing effect
     const dynamicTextElement = document.getElementById('dynamic-text');
     if (dynamicTextElement) {
         runTypingLoop(phrases, dynamicTextElement);
     }
     
-    // Initial render of projects and setup filter buttons
     if (document.querySelector('.gallery')) {
         renderProjects();
         setupFilterButtons();
     }
-
 });

@@ -20,9 +20,9 @@
         <div class="container mx-auto flex justify-between items-center">
             <div class="font-bold text-xl"> <span class="custom-cursor"> &lt; /   </span> mtdev <span class="custom-cursor">&gt; </span></div>
             <div class="flex space-x-5">
-                <a href="#home" class="nav-item" data-target="home">Home</a>
-                <a href="#projects" class="nav-item" data-target="projects">Projects</a>
-                <a href="#about" class="nav-item" data-target="about">About</a>
+                <a href="#home" class="nav-item" data-target="home">Início</a>
+                <a href="#projects" class="nav-item" data-target="projects">Projetos</a>
+                <a href="#about" class="nav-item" data-target="about">Sobre</a>
             </div>
         </div>
     </nav>
@@ -40,11 +40,11 @@
                 <div class="flex-grow container mx-auto flex flex-col justify-center items-center text-center px-4 py-16">
                     <div class="mb-8">
                         <div class="text-4xl md:text-6xl lg:text-9xl font-bold mb-4">
-                            <span id="title-text" class="main_title">Hey, I'm MTDev!</span><br>
+                            <span id="title-text" class="main_title">Olá, sou MTDev!</span><br>
                             <span id="dynamic-text" class="gradient-text"></span><span class="custom-cursor">|</span>
                         </div>
                         <p id="description-text" class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
-                            Let's work together and do something <b>incredible</b>?<br>
+                            Bora trabalhar junto e fazer algo <b>incrível</b>?<br>
                         </p>
                     </div>
                 </div>
@@ -52,12 +52,12 @@
     
             <section id="projects">
                  <div class="pt-20"></div>
-                <h1>My Projects</h1>
-                <p class="projects-description-text">My projects developed so far, feel free to look!</p>
+                <h1>Meus Projetos</h1>
+                <p class="projects-description-text">Meus projetos desenvolvidos até agora, fique à vontade para olhar!</p>
                 <div class="pt-5"></div>
                 <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn game" data-filter="game">Games</button>
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn game" data-filter="game">Jogos</button>
                 </div>
                 <div class="gallery">
                     </div>
@@ -65,33 +65,35 @@
     
             <section id="about">
                 <div class="pt-20"></div>
-                <h1>About Me</h1>
-                <p class="projects-description-text">A brief summary of who I am and what I do.</p>
+                <h1>Sobre Mim</h1>
+                <p class="projects-description-text">Um breve resumo de quem sou e o que faço.</p>
                 <div class="about-container">
                     <div class="about-image-wrapper">
                         <div class="about-image">
                             <img src="/Images/OthersImages/mt.jpg" alt="A portrait of MTDev" class="profile-pic">
                         </div>
                         <div class="quick-info">
-                            <div class="info-item" title="Location"><span>📍</span> Brazil</div>
-                            <div class="info-item" title="Availability"><span>✅</span> Remote Work</div>
+                            <div class="info-item" title="Location"><span><i class="fas fa-map-marker-alt text-red-500"></i></span> Itu, SP, Brasil</div>
+                            <div class="info-item" title="Availability"><span><i class="fas fa-check-circle text-green-500"></i></span> Trabalho Remoto</div>
+                            <div class="info-item" title="Availability"><span><i class="fas fa-check-circle text-green-500"></i></span> Trabalho Presencial</div>
                         </div>
                         <a href="mailto:mtdevdev@gmail.com" class="cta-button">
-                            Let's work together <i class="fas fa-arrow-right"></i>
+                            Bora trabalhar junto <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                     <div class="about-text">
-                        <h2>Hello! I'm MTDev.</h2>
+                        <h2>Olá! Sou Matheus Barboza Marçal.</h2>
                         <p>
-                            A <b>dedicated and passionate game developer and programmer</b> with a love for <b>creating immersive and engaging digital experiences</b>. With a <b>strong foundation in C#</b>, and <b>hands-on experience with game engines like Unity</b>, I thrive on turning complex ideas into reality.
+                            Um <b>desenvolvedor de jogos e programador dedicado e apaixonado</b> com amor por <b>criar experiências digitais imersivas e envolventes</b>. Com uma <b>base sólida em C#</b>, e <b>experiência prática com motores de jogos como Unity</b>, eu prospero em transformar ideias complexas em realidade.
                         </p>
                         
                         <div class="about-skills">
-                            <h3>Skills & Tools</h3>
+                            <h3>Habilidades & Ferramentas</h3>
                             <ul class="about-skills-list">
-                                <li><i class="fas fa-gamepad"></i> Game Development</li>
+                                <li><i class="fas fa-gamepad"></i> Desenvolvimento de Jogos</li>
                                 <li><i class="fas fa-code"></i> C#</li>
                                 <li><i class="fab fa-unity"></i> Unity Engine</li>
+                                <li><i class="fab fa-python"></i> Python</li>
                             </ul>
                         </div>
                     </div>
@@ -102,20 +104,43 @@
         </div>
     </main>
 
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-modal" class="close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 id="modal-title" class="modal-title">Project Title</h2>
+            <div class="video-wrapper">
+                <iframe 
+                    id="modal-video" 
+                    src="" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p id="modal-description" class="modal-description">Description goes here...</p>
+            <div id="modal-links" class="modal-links"></div>
+        </div>
+    </div>
+
     <footer class="text-white p-4 text-center" id="footerBar">
-        <h2> <b>Quick Links</b> </h2>
+        <h2> <b>Links Rápidos</b> </h2>
         <div class="social-links">
-            <a href="mailto:mtdevdev@gmail.com" class="social-link" target="_blank" aria-label="Email me">
+            <a href="mailto:mtdevdev@gmail.com" class="social-link" target="_blank" aria-label="Envie-me um email">
                 <i class="fa-regular fa-envelope"></i>
             </a>
-            <a href="https://mtdeveloper.itch.io/" class="social-link" target="_blank" aria-label="Visit my Itch.io page">
+            <a href="https://mtdeveloper.itch.io/" class="social-link" target="_blank" aria-label="Visite minha página no Itch.io">
                 <i class="fab fa-itch-io"></i>
             </a>
-            <a href="https://www.linkedin.com/in/matheus-mar%C3%A7al-mtdev/" class="social-link" target="_blank" aria-label="Visit my LinkedIn profile">
+            <a href="https://www.linkedin.com/in/matheus-mar%C3%A7al-mtdev/" class="social-link" target="_blank" aria-label="Visite meu perfil no LinkedIn">
                 <i class="fab fa-linkedin"></i>
             </a>
+            <a href="https://github.com/mtdevdev" class="social-link" target="_blank" aria-label="Visite meu perfil no GitHub">
+                <i class="fab fa-github"></i>
+            </a>
         </div>
-        <p id="footer-text">&copy; 2025 MTDev. All rights reserved.</p>
+        <p id="footer-text">&copy; 2025 MTDev. Todos os direitos reservados.</p>
     </footer>
 
     <script src="js/main.js" defer></script>
