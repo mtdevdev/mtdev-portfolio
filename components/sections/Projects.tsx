@@ -32,9 +32,9 @@ export const Projects: React.FC = () => {
                 {project.coverImage && <img src={project.coverImage} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.style.display = 'none'; }} />}
                 <div className="absolute top-5 right-5 z-10"><span className="px-3 py-1 bg-black/80 font-tech text-[10px] text-white tracking-widest uppercase rounded-full">{project.engine}</span></div>
                 
-                {/* Overlay e Botão "Ver Detalhes" com transição suavizada */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 z-20 bg-black/20 backdrop-blur-[1px]">
-                  <div className="bg-white/10 backdrop-blur-md px-6 py-2 rounded-full flex items-center gap-2 border border-white/10 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                {/* Overlay apenas para posicionar o botão, sem blur na imagem inteira */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 z-20">
+                  <div className="bg-neutral-900/60 backdrop-blur-md px-6 py-2 rounded-full flex items-center gap-2 border border-white/10 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 shadow-xl">
                     <span className="text-white text-xs font-bold uppercase tracking-widest">Ver Detalhes</span>
                     <Plus className="w-4 h-4 text-white" />
                   </div>
