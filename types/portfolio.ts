@@ -16,6 +16,7 @@ export interface Project {
   isAvailable: boolean;
   type: 'image' | 'video';
   coverImage?: string;
+  videoPreviewUrl?: string;
   role: string;
   teamSize: string;
   techHighlights: string[];

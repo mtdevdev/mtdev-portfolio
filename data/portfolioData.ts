@@ -3,14 +3,14 @@ import { PortfolioData } from '../types/portfolio';
 
 export const PORTFOLIO_DATA: PortfolioData = {
   name: "Matheus Barboza Marçal",
-  role: "Gameplay Programmer & Developer",
+  role: "Developer & Gameplay Programmer",
   location: "Itu, SP, Brasil",
   resumeUrl: "/assets/documents/cv.pdf",
   availability: "Trabalho Remoto e Presencial",
   bio: {
-    intro: "Gameplay Programmer focado em C# e Unity, especializando na criação de mecânicas de jogo responsivas e arquitetura de código escalável.",
+    intro: "Desenvolvedor focado em C# e Unity, especializando na criação de mecânicas de jogo responsivas e arquitetura de código escalável.",
     description: "Com uma abordagem analítica e criativa, dedico-me a transformar conceitos de Game Design em sistemas lógicos robustos. Meus projetos demonstram aplicação prática de Programação Orientada a Objetos (POO), Design Patterns e otimização de performance. Busco integrar times de desenvolvimento onde possa contribuir com soluções técnicas eficientes, mantendo o foco na 'game feel' e na qualidade final da experiência do usuário.",
-    profileImage: "/assets/images/about/profile01.jpg"
+    profileImage: "/assets/images/about/profile02.jpg"
   },
   socials: [
     { platform: "Github", url: "https://github.com/mtdevdev", icon: "github" },
@@ -43,6 +43,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       isAvailable: true,
       type: "image",
       coverImage: "/assets/projects/splinteris/cover.jpg",
+      videoPreviewUrl: "/assets/projects/splinteris/preview.mp4",
       role: "Solo Developer",
       teamSize: "1 (Solo)",
       techHighlights: [
@@ -57,9 +58,11 @@ export const PORTFOLIO_DATA: PortfolioData = {
         "Combate de Alta Letalidade"
       ],
       gallery: [
-        "/assets/projects/splinteris/screen1.jpg",
-        "/assets/projects/splinteris/screen2.jpg",
-        "/assets/projects/splinteris/screen3.jpg"
+        "/assets/projects/splinteris/screen1.png",
+        "/assets/projects/splinteris/screen2.png",
+        "/assets/projects/splinteris/screen3.png",
+        "/assets/projects/splinteris/screen4.png",
+        "/assets/projects/splinteris/screen5.png"
       ],
       /*codeSnippet: {
         title: "Input-Based Time Scaling",
@@ -97,7 +100,8 @@ public class TimeManager : MonoBehaviour {
       isAvailable: true,
       type: "image",
       coverImage: "/assets/projects/retro-rebound/cover.png",
-      role: "Gameplay Programmer & Designer",
+      videoPreviewUrl: "/assets/projects/retro-rebound/preview.mp4",
+      role: "Solo Developer",
       teamSize: "1 (Solo)",
       techHighlights: [
         "Sistema de Câmera Reativa",
@@ -112,8 +116,8 @@ public class TimeManager : MonoBehaviour {
         "Customização de Cores em Runtime"
       ],
       gallery: [
-         "/assets/projects/retro-rebound/screen1.jpg",
-         "/assets/projects/retro-rebound/screen2.jpg"
+         "/assets/projects/retro-rebound/screen1.png",
+         "/assets/projects/retro-rebound/screen2.png"
       ],
       /*codeSnippet: {
         title: "Dynamic Camera Shake",
@@ -153,6 +157,7 @@ private IEnumerator ShakeRoutine(float intensity, float duration) {
       isAvailable: true,
       type: "image",
       coverImage: "/assets/projects/galactic-paradox/cover.jpg",
+      videoPreviewUrl: "/assets/projects/galactic-paradox/preview.mp4",
       role: "Solo Developer",
       teamSize: "1 (Solo)",
       techHighlights: [
@@ -168,7 +173,11 @@ private IEnumerator ShakeRoutine(float intensity, float duration) {
         "Estética Neon/Retro"
       ],
       gallery: [
-         "/assets/projects/galactic-paradox/screen1.jpg"
+         "/assets/projects/galactic-paradox/screen1.png",
+         "/assets/projects/galactic-paradox/screen2.png",
+         "/assets/projects/galactic-paradox/screen3.jpg",
+         "/assets/projects/galactic-paradox/screen4.jpg",
+         "/assets/projects/galactic-paradox/screen5.png"
       ],
       /*codeSnippet: {
         title: "Circular Orbit Movement",

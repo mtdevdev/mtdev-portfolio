@@ -68,13 +68,13 @@ export const Navbar: React.FC = () => {
                 href={link.href}
                 onClick={(e) => handleScrollTo(e, link.href)}
                 className={`transition-all duration-300 hover:text-white ${
-                   activeSection === link.href.replace('#', '') ? 'text-emerald-400 font-bold' : 'text-neutral-400'
+                   activeSection === link.href.replace('#', '') ? 'text-accent-400 font-bold' : 'text-neutral-400'
                 }`}
               >
                 {link.name}
               </a>
             ))}
-            <a href="mailto:mtdevdev@gmail.com" className="px-6 py-2 border border-white/10 hover:border-emerald-500/50 transition-all bg-white/5 hover:bg-emerald-950/20 rounded-full text-white">Contato</a>
+            <a href="mailto:mtdevdev@gmail.com" className="px-6 py-2 border border-white/10 hover:border-accent-500/50 transition-all bg-white/5 hover:bg-accent-950/20 rounded-full text-white">Contato</a>
           </div>
           <button className="md:hidden z-50 text-white p-2 hover:bg-white/10 rounded-full transition-colors" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -87,12 +87,12 @@ export const Navbar: React.FC = () => {
             key={link.name} 
             href={link.href} 
             onClick={(e) => handleScrollTo(e, link.href)} 
-            className={`text-2xl font-tech font-bold transition-colors uppercase tracking-widest ${activeSection === link.href.replace('#', '') ? 'text-emerald-400' : 'text-white hover:text-emerald-400'}`}
+            className={`text-2xl font-tech font-bold transition-colors uppercase tracking-widest ${activeSection === link.href.replace('#', '') ? 'text-accent-400' : 'text-white hover:text-accent-400'}`}
           >
             {link.name}
           </a>
         ))}
-        <a href="mailto:mtdevdev@gmail.com" onClick={() => setIsMobileMenuOpen(false)} className="px-8 py-3 mt-4 border border-white/20 rounded-full text-emerald-400 text-sm font-tech uppercase tracking-widest">Entre em Contato</a>
+        <a href="mailto:mtdevdev@gmail.com" onClick={() => setIsMobileMenuOpen(false)} className="px-8 py-3 mt-4 border border-white/20 rounded-full text-accent-400 text-sm font-tech uppercase tracking-widest">Entre em Contato</a>
       </div>
     </>
   );

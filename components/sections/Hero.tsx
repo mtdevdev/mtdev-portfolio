@@ -22,10 +22,10 @@ export const Hero: React.FC = () => {
 
   return (
     <section id="hero" className="min-h-screen flex flex-col justify-center items-center px-6 pt-20 overflow-hidden relative">
-      <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[100px] -z-10 pointer-events-none" style={{ transform: `translate(-50%, calc(-50% + ${scrollY * 0.5}px))` }} />
+      <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-accent-500/5 rounded-full blur-[100px] -z-10 pointer-events-none" style={{ transform: `translate(-50%, calc(-50% + ${scrollY * 0.5}px))` }} />
       <div className="max-w-7xl w-full text-center space-y-8 relative z-10">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-white/10 rounded-full bg-neutral-900/50" style={{ transform: `translateY(${scrollY * -0.2}px)` }}>
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse-slow"></span>
+          <span className="w-2 h-2 rounded-full bg-accent-500 animate-pulse-slow"></span>
           <span className="text-[10px] font-tech uppercase tracking-[0.2em] text-neutral-400">{PORTFOLIO_DATA.availability}</span>
         </div>
         <div className="space-y-4" style={{ transform: `translateY(${scrollY * 0.2}px)` }}>

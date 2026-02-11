@@ -26,13 +26,13 @@ export const Footer: React.FC = () => {
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter">Vamos construir o próximo nível?</h2>
         <div className="flex flex-col items-center gap-4">
             <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
-                <a href="mailto:mtdevdev@gmail.com" className="flex items-center gap-4 group px-6 py-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-emerald-500/30 transition-all">
-                    <Mail className="w-5 h-5 text-neutral-400 group-hover:text-emerald-400 transition-colors" />
+                <a href="mailto:mtdevdev@gmail.com" className="flex items-center gap-4 group px-6 py-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-accent-500/30 transition-all">
+                    <Mail className="w-5 h-5 text-neutral-400 group-hover:text-accent-400 transition-colors" />
                     <span className="text-sm font-tech tracking-widest text-neutral-300 group-hover:text-white uppercase">Enviar Email</span>
                 </a>
-                <button onClick={handleCopyEmail} className="flex items-center gap-3 px-6 py-4 bg-neutral-900 border border-white/10 rounded-2xl hover:bg-neutral-800 hover:border-emerald-500/30 transition-all group relative overflow-hidden">
-                    {copied ? <Check className="w-5 h-5 text-emerald-400" /> : <Copy className="w-5 h-5 text-neutral-400 group-hover:text-white" />}
-                    <span className={`text-sm font-tech tracking-widest uppercase transition-colors ${copied ? 'text-emerald-400' : 'text-neutral-400 group-hover:text-white'}`}>
+                <button onClick={handleCopyEmail} className="flex items-center gap-3 px-6 py-4 bg-neutral-900 border border-white/10 rounded-2xl hover:bg-neutral-800 hover:border-accent-500/30 transition-all group relative overflow-hidden">
+                    {copied ? <Check className="w-5 h-5 text-accent-400" /> : <Copy className="w-5 h-5 text-neutral-400 group-hover:text-white" />}
+                    <span className={`text-sm font-tech tracking-widest uppercase transition-colors ${copied ? 'text-accent-400' : 'text-neutral-400 group-hover:text-white'}`}>
                         {copied ? 'Copiado!' : 'Copiar Email'}
                     </span>
                 </button>
