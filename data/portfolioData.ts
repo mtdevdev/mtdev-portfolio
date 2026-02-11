@@ -5,7 +5,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
   name: "Matheus Barboza Marçal",
   role: "Gameplay Programmer & Developer",
   location: "Itu, SP, Brasil",
-  resumeUrl: "/assets/cv.pdf", // Make sure to add your PDF file to public/assets/cv.pdf
+  resumeUrl: "/assets/documents/cv.pdf",
   availability: "Trabalho Remoto e Presencial",
   bio: {
     intro: "Gameplay Programmer focado em C# e Unity, especializando na criação de mecânicas de jogo responsivas e arquitetura de código escalável.",
@@ -95,7 +95,7 @@ public class TimeManager : MonoBehaviour {
       link: "https://mtdeveloper.itch.io/retro-rebound",
       isAvailable: true,
       type: "image",
-      coverImage: "/assets/projects/retro-rebound/cover.jpg",
+      coverImage: "/assets/projects/retro-rebound/cover.png",
       role: "Gameplay Programmer & Designer",
       teamSize: "1 (Solo)",
       techHighlights: [
