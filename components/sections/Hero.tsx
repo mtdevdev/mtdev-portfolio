@@ -11,6 +11,15 @@ export const Hero: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', `#${id}`);
+    }
+  };
+
   return (
     <section id="hero" className="min-h-screen flex flex-col justify-center items-center px-6 pt-20 overflow-hidden relative">
       <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[100px] -z-10 pointer-events-none" style={{ transform: `translate(-50%, calc(-50% + ${scrollY * 0.5}px))` }} />
@@ -28,8 +37,8 @@ export const Hero: React.FC = () => {
           <span className="text-xs tracking-widest uppercase">{PORTFOLIO_DATA.location}</span>
         </div>
         <div className="flex flex-col md:flex-row gap-4 justify-center items-center pt-4" style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
-          <a href="#projects" className="w-48 py-4 bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-all text-center rounded-full shadow-lg shadow-white/5">Ver Projetos</a>
-          <a href="#about" className="w-48 py-4 border border-white/20 text-white font-semibold text-sm hover:bg-white/5 transition-all text-center rounded-full">Sobre Mim</a>
+          <a href="#projects" onClick={(e) => handleScrollTo(e, 'projects')} className="w-48 py-4 bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-all text-center rounded-full shadow-lg shadow-white/5">Ver Projetos</a>
+          <a href="#about" onClick={(e) => handleScrollTo(e, 'about')} className="w-48 py-4 border border-white/20 text-white font-semibold text-sm hover:bg-white/5 transition-all text-center rounded-full">Sobre Mim</a>
         </div>
         <div className="flex justify-center gap-8 pt-12" style={{ transform: `translateY(${scrollY * 0.05}px)` }}>
           {PORTFOLIO_DATA.socials.map((social) => (social.platform !== 'Email' && (

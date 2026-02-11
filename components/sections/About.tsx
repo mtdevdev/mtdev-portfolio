@@ -1,11 +1,10 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Code2, Layers, Cpu, Terminal, User, GraduationCap, Award, BookOpen, FileText, Globe } from 'lucide-react';
+import { Code2, Layers, Cpu, Terminal, GraduationCap, Award, FileText, Globe } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../../data/portfolioData';
 
 export const About: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [imgError, setImgError] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -24,16 +23,10 @@ export const About: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-8 items-start">
               <div className="shrink-0 group">
                 <div className="w-32 h-32 md:w-40 md:h-40 bg-neutral-800 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden relative shadow-2xl">
-                  {/* Ícone de Fallback sempre presente no fundo */}
-                  <User className="absolute w-12 h-12 text-neutral-600 group-hover:text-emerald-500/50 transition-colors duration-300" />
-                  
-                  {/* Imagem com tratamento de erro via opacidade */}
                   <img 
                     src={PORTFOLIO_DATA.bio.profileImage} 
                     alt={PORTFOLIO_DATA.name} 
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${imgError ? 'opacity-0' : 'opacity-100'}`}
-                    onError={() => setImgError(true)}
-                    onLoad={() => setImgError(false)}
+                    className="absolute inset-0 w-full h-full object-cover" 
                   />
                 </div>
               </div>
