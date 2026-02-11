@@ -1,23 +1,20 @@
-# 🌐 My Portfolio
+# MTDev Portfolio
 
-This repository hosts my **web portfolio**, where I showcase projects and creations from across the **technology sector** including **game development**, **AI experiments**, **music tech**, and more.
+A personal portfolio website showcasing my projects, with a focus on game development.
 
----
+## Local Development
 
-## Guia de Manutenção (Dev Only)
+1.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-<details>
-<summary><strong>Clique para ver os comandos de atualização (Git & Vercel)</strong></summary>
+2.  **Start the development server:**
+    ```bash
+    npm run dev
+    ```
 
-### 1. Fluxo Padrão (Dia a dia)
-Após salvar os arquivos (`Ctrl + S`), abra o terminal e rode:
+## Content Management
 
-```bash
-# 1. Adiciona todas as alterações
-git add .
-
-# 2. Salva a versão (MUDE A MENSAGEM!)
-git commit -m "Descrição do que foi alterado"
-
-# 3. Envia para o GitHub (Deploy automático na Vercel)
-git push
+*   **Data:** All portfolio content (bio, projects, skills) is managed in `constants.ts`.
+*   **Assets:** Images and PDFs should be placed in the `public/assets` folder.
