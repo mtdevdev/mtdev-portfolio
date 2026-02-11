@@ -62,7 +62,7 @@ const ProjectCard: React.FC<{
             muted
             loop
             playsInline
-            preload="none" // Otimização: carrega metadados, mas baixa o pesado sob demanda (ou mude para 'auto' se preferir instantaneidade)
+            preload="none"
             className={`absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-700 ease-in-out group-hover:scale-105 ${
               isHovered ? 'opacity-100' : 'opacity-0'
             }`}
@@ -71,15 +71,15 @@ const ProjectCard: React.FC<{
 
         <div className="absolute top-5 right-5 z-20"><span className="px-3 py-1 bg-black/80 font-tech text-[10px] text-white tracking-widest uppercase rounded-full">{project.engine}</span></div>
         
-        {/* Camada 3: Overlay de Ação - Movido para o Canto Inferior Direito */}
-        <div className="absolute inset-0 flex items-end justify-end p-6 z-30 pointer-events-none">
+        {/* Camada 3: Overlay de Ação - Movido para o Canto Inferior Esquerdo */}
+        <div className="absolute inset-0 flex items-end justify-start p-6 z-30 pointer-events-none">
           {/* Botão com blur e transição suave */}
           <div className={`flex items-center gap-2 px-5 py-2 rounded-xl border border-white/10 shadow-xl
                           bg-neutral-900/80 backdrop-blur-md
                           transition-all duration-500 ease-out transform
                           ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-            <span className="text-white text-[10px] font-bold uppercase tracking-widest">Clique para mais detalhes</span>
             <Plus className="w-3 h-3 text-accent-400" />
+            <span className="text-white text-[10px] font-bold uppercase tracking-widest">Detalhes</span>
           </div>
         </div>
 

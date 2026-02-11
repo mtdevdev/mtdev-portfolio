@@ -14,8 +14,11 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
     return () => { document.body.style.overflow = 'unset'; };
   }, []);
 
-  // Combina a imagem de capa com a galeria para exibição na lista de imagens
-  const allGalleryImages = [project.coverImage, ...project.gallery].filter(Boolean) as string[];
+  // Combina a imagem de capa com a galeria de forma segura
+  const allGalleryImages = [
+    project.coverImage, 
+    ...(project.gallery || [])
+  ].filter(Boolean) as string[];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
@@ -43,13 +46,16 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   muted 
                   loop 
                   playsInline 
+                  controls
                   className="w-full h-full object-cover"
                 />
               ) : (
                 project.coverImage && <img src={project.coverImage} alt={project.title} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
               )}
-              {/* Overlay suave para integrar com o fundo escuro */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f11]/40 to-transparent pointer-events-none"></div>
+              {/* Se não houver vídeo, mantemos o gradiente apenas para imagens estáticas para não escurecer o vídeo */}
+              {!project.videoPreviewUrl && (
+                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f11]/40 to-transparent pointer-events-none"></div>
+              )}
             </div>
 
             {/* Description */}
@@ -78,7 +84,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                  <h3 className="text-lg font-tech text-white uppercase tracking-widest flex items-center gap-2"><ImageIcon className="w-4 h-4 text-accent-500" /> Galeria</h3>
                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {allGalleryImages.map((img, idx) => (
-                      <div key={idx} className="aspect-video bg-neutral-900 rounded-xl overflow-hidden border border-white/5 hover:border-white/20 transition-colors group">
+                      <div key={idx} className="aspect-video bg-neutral-900 rounded-xl overflow-hidden border border-white/5 hover:border-white/20 transition-colors group relative">
                         <img 
                           src={img} 
                           alt={`${project.title} gallery ${idx + 1}`} 
