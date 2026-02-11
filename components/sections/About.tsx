@@ -5,6 +5,7 @@ import { PORTFOLIO_DATA } from '../../data/portfolioData';
 
 export const About: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,8 +24,17 @@ export const About: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-8 items-start">
               <div className="shrink-0 group">
                 <div className="w-32 h-32 md:w-40 md:h-40 bg-neutral-800 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden relative shadow-2xl">
-                  <User className="w-12 h-12 text-neutral-600 group-hover:text-emerald-500/50 transition-colors duration-300" />
-                  <img src={PORTFOLIO_DATA.bio.profileImage} alt={PORTFOLIO_DATA.name} className="absolute inset-0 w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                  {/* Renderiza o ícone apenas se houver erro na imagem */}
+                  {imgError ? (
+                    <User className="w-12 h-12 text-neutral-600 group-hover:text-emerald-500/50 transition-colors duration-300" />
+                  ) : (
+                    <img 
+                      src={PORTFOLIO_DATA.bio.profileImage} 
+                      alt={PORTFOLIO_DATA.name} 
+                      className="absolute inset-0 w-full h-full object-cover" 
+                      onError={() => setImgError(true)} 
+                    />
+                  )}
                 </div>
               </div>
               <div className="space-y-6">
