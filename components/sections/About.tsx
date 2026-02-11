@@ -1,10 +1,11 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Code2, Layers, Cpu, Terminal, GraduationCap, Award, FileText, Globe } from 'lucide-react';
+import { Code2, Layers, Cpu, Terminal, GraduationCap, Award, FileText, Globe, User } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../../data/portfolioData';
 
 export const About: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -12,6 +13,11 @@ export const About: React.FC = () => {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+
+  // Extrai as iniciais para o fallback
+  const getInitials = (name: string) => {
+    return name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+  };
 
   return (
     <section id="about" className="py-32 bg-neutral-900/20" ref={sectionRef}>
@@ -21,15 +27,35 @@ export const About: React.FC = () => {
           <div className={`md:col-span-7 space-y-8 reveal ${isVisible ? 'active' : ''}`}>
             <h2 className="text-sm font-tech tracking-[0.3em] text-accent-500/80 uppercase flex items-center gap-2"><Terminal className="w-4 h-4" /> Perfil Profissional</h2>
             <div className="flex flex-col sm:flex-row gap-8 items-start">
-              <div className="shrink-0 group">
-                <div className="w-32 h-32 md:w-40 md:h-40 bg-neutral-800 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden relative shadow-2xl">
-                  <img 
-                    src={PORTFOLIO_DATA.bio.profileImage} 
-                    alt={PORTFOLIO_DATA.name} 
-                    className="absolute inset-0 w-full h-full object-cover" 
-                  />
+              
+              {/* Profile Image System */}
+              <div className="shrink-0 group relative">
+                <div className="w-32 h-32 md:w-40 md:h-40 bg-neutral-800 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden relative shadow-2xl transition-all duration-500 group-hover:border-accent-500/50">
+                  {!imgError ? (
+                    <img 
+                      src={PORTFOLIO_DATA.bio.profileImage} 
+                      alt={PORTFOLIO_DATA.name} 
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                      onError={() => setImgError(true)}
+                    />
+                  ) : (
+                    <div className="flex flex-col items-center justify-center bg-neutral-900 w-full h-full">
+                       <User className="w-10 h-10 text-neutral-600 mb-2 group-hover:text-accent-500 transition-colors" />
+                       <span className="font-tech text-xl font-bold text-neutral-500 tracking-widest group-hover:text-white transition-colors">
+                         {getInitials(PORTFOLIO_DATA.name)}
+                       </span>
+                    </div>
+                  )}
+                  
+                  {/* Overlay Tech Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-accent-500/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 </div>
+                {/* Decorative Elements around image */}
+                <div className="absolute -top-2 -right-2 w-6 h-6 border-t border-r border-accent-500/30 rounded-tr-lg opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b border-l border-accent-500/30 rounded-bl-lg opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
               </div>
+
               <div className="space-y-6">
                 <p className="text-2xl md:text-3xl font-medium leading-relaxed text-neutral-200">{PORTFOLIO_DATA.bio.intro}</p>
                 <div className="h-px w-20 bg-accent-500/30"></div>

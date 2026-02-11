@@ -79,7 +79,7 @@ const ProjectCard: React.FC<{
                           transition-all duration-500 ease-out transform
                           ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
             <Plus className="w-3 h-3 text-accent-400" />
-            <span className="text-white text-[10px] font-bold uppercase tracking-widest">Detalhes</span>
+            <span className="text-white text-[10px] font-bold uppercase tracking-widest">Clique para mais detalhes</span>
           </div>
         </div>
 
