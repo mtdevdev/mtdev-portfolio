@@ -60,7 +60,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
         "/assets/projects/splinteris/screen2.jpg",
         "/assets/projects/splinteris/screen3.jpg"
       ],
-      codeSnippet: {
+      /*codeSnippet: {
         title: "Input-Based Time Scaling",
         language: "csharp",
         code: `// Gerenciamento centralizado de escala de tempo baseado no input do jogador
@@ -83,7 +83,7 @@ public class TimeManager : MonoBehaviour {
         AudioManager.Instance.SetGlobalPitch(Time.timeScale);
     }
 }`
-      }
+      }*/
     },
     {
       id: "retro-rebound",
@@ -114,7 +114,7 @@ public class TimeManager : MonoBehaviour {
          "/assets/projects/retro-rebound/screen1.jpg",
          "/assets/projects/retro-rebound/screen2.jpg"
       ],
-      codeSnippet: {
+      /*codeSnippet: {
         title: "Dynamic Camera Shake",
         language: "csharp",
         code: `public void TriggerShake(float intensity, float duration) {
@@ -139,7 +139,7 @@ private IEnumerator ShakeRoutine(float intensity, float duration) {
     
     transform.localPosition = originalPos;
 }`
-      }
+      }*/
     },
     {
       id: "galactic-paradox",
@@ -169,7 +169,7 @@ private IEnumerator ShakeRoutine(float intensity, float duration) {
       gallery: [
          "/assets/projects/galactic-paradox/screen1.jpg"
       ],
-      codeSnippet: {
+      /*codeSnippet: {
         title: "Circular Orbit Movement",
         language: "gdscript",
         code: `extends KinematicBody2D
@@ -194,7 +194,7 @@ func _physics_process(delta):
     # Aplica a rotação da nave para olhar para o centro (ou tangente)
     rotation = angle + PI/2
     position = target_pos`
-      }
+      }*/
     }
   ],
   education: [

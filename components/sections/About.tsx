@@ -24,7 +24,7 @@ export const About: React.FC = () => {
               <div className="shrink-0 group">
                 <div className="w-32 h-32 md:w-40 md:h-40 bg-neutral-800 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden relative shadow-2xl">
                   <User className="w-12 h-12 text-neutral-600 group-hover:text-emerald-500/50 transition-colors duration-300" />
-                  <img src="/assets/profile.jpg" alt="Matheus" className="absolute inset-0 w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                  <img src="/assets/images/about/profile01.jpg" alt="Matheus" className="absolute inset-0 w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                 </div>
               </div>
               <div className="space-y-6">
