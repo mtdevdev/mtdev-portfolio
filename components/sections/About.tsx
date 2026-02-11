@@ -144,9 +144,6 @@ export const About: React.FC = () => {
                     {PORTFOLIO_DATA.languages.map((lang, idx) => (
                         <div key={idx} className="flex items-center justify-between p-4 bg-neutral-900/30 border border-white/5 rounded-xl">
                             <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 rounded-full bg-accent-900/20 flex items-center justify-center text-accent-500 font-bold text-xs border border-accent-500/20">
-                                    {lang.name.substring(0, 2).toUpperCase()}
-                                </div>
                                 <span className="text-white font-medium text-sm">{lang.name}</span>
                             </div>
                             <span className="px-2 py-1 bg-white/5 border border-white/10 text-neutral-400 text-[10px] uppercase tracking-wider rounded">
