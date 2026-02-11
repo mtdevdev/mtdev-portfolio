@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
             <p className="text-xs text-neutral-600 font-tech">mtdevdev@gmail.com</p>
         </div>
         <div className="pt-20 flex flex-col md:flex-row justify-between items-center gap-8 border-t border-white/5">
-          <p className="text-[10px] font-tech tracking-[0.3em] text-neutral-600 uppercase">© 2026 MTDev. All Rights Reserved.</p>
+          <p className="text-[10px] font-tech tracking-[0.3em] text-neutral-600 uppercase">© 2026 MTDev. Todos os direitos reservados.</p>
           <div className="flex gap-6">
             <a href="https://github.com/mtdevdev" className="text-neutral-600 hover:text-white transition-colors hover:-translate-y-1"><Github className="w-5 h-5" /></a>
             <a href="https://www.linkedin.com/in/matheus-mar%C3%A7al-mtdev/" className="text-neutral-600 hover:text-white transition-colors hover:-translate-y-1"><Linkedin className="w-5 h-5" /></a>

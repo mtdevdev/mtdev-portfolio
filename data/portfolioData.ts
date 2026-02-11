@@ -10,7 +10,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
   bio: {
     intro: "Desenvolvedor focado em C# e Unity, especializando na criação de mecânicas de jogo responsivas e arquitetura de código escalável.",
     description: "Com uma abordagem analítica e criativa, dedico-me a transformar conceitos de Game Design em sistemas lógicos robustos. Meus projetos demonstram aplicação prática de Programação Orientada a Objetos (POO), Design Patterns e otimização de performance. Busco integrar times de desenvolvimento onde possa contribuir com soluções técnicas eficientes, mantendo o foco na 'game feel' e na qualidade final da experiência do usuário.",
-    profileImage: "/assets/images/about/profile02.jpg"
+    profileImage: "/assets/images/profile.jpg"
   },
   socials: [
     { platform: "Github", url: "https://github.com/mtdevdev", icon: "github" },
