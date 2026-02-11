@@ -11,7 +11,10 @@ export const Navbar: React.FC = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
       const sections = ['hero', 'about', 'projects'];
-      const scrollPosition = window.scrollY + 100;
+      
+      // Ajuste do offset para considerar a navbar
+      const scrollPosition = window.scrollY + 150; 
+      
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -27,6 +30,21 @@ export const Navbar: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+      // Atualiza a URL sem pular a página
+      window.history.pushState(null, '', href);
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   const navLinks = [
     { name: 'Home', href: '#hero' },
@@ -48,6 +66,7 @@ export const Navbar: React.FC = () => {
               <a 
                 key={link.name} 
                 href={link.href}
+                onClick={(e) => handleScrollTo(e, link.href)}
                 className={`transition-all duration-300 hover:text-white ${
                    activeSection === link.href.replace('#', '') ? 'text-emerald-400 font-bold' : 'text-neutral-400'
                 }`}
@@ -64,7 +83,12 @@ export const Navbar: React.FC = () => {
       </nav>
       <div className={`fixed inset-0 z-30 bg-neutral-950 transition-transform duration-300 md:hidden flex flex-col items-center justify-center space-y-8 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         {navLinks.map((link) => (
-          <a key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className={`text-2xl font-tech font-bold transition-colors uppercase tracking-widest ${activeSection === link.href.replace('#', '') ? 'text-emerald-400' : 'text-white hover:text-emerald-400'}`}>
+          <a 
+            key={link.name} 
+            href={link.href} 
+            onClick={(e) => handleScrollTo(e, link.href)} 
+            className={`text-2xl font-tech font-bold transition-colors uppercase tracking-widest ${activeSection === link.href.replace('#', '') ? 'text-emerald-400' : 'text-white hover:text-emerald-400'}`}
+          >
             {link.name}
           </a>
         ))}

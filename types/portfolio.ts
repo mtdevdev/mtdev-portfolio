@@ -64,6 +64,7 @@ export interface PortfolioData {
   bio: {
     intro: string;
     description: string;
+    profileImage: string;
   };
   availability: string;
   socials: SocialLink[];
