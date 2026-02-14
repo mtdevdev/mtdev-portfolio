@@ -15,7 +15,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
   socials: [
     { platform: "Github", url: "https://github.com/mtdevdev", icon: "github" },
     { platform: "LinkedIn", url: "https://www.linkedin.com/in/matheus-mar%C3%A7al-mtdev/", icon: "linkedin" },
-    { platform: "Itch.io", url: "https://mtdeveloper.itch.io/", icon: "gamepad" },
+    { platform: "Itch.io", url: "https://mtd3v.itch.io/", icon: "gamepad" },
     { platform: "Email", url: "mailto:mtdevdev@gmail.com", icon: "mail" }
   ],
   stack: [
