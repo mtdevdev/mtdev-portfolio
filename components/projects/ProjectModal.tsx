@@ -101,7 +101,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           <div className="lg:col-span-4 space-y-8">
             <div className="flex flex-col gap-3 p-6 bg-neutral-900/50 rounded-2xl border border-white/5 sticky top-24">
               {project.isAvailable && project.link && (<a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-4 bg-white text-black font-bold text-sm uppercase tracking-wider rounded-xl hover:bg-neutral-200 transition-all shadow-lg"><Gamepad2 className="w-4 h-4" /> Ver Página</a>)}
-              {project.repoLink && (<a href={project.repoLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-4 border border-white/10 text-white font-bold text-sm uppercase tracking-wider rounded-xl hover:bg-white/5 transition-all"><Github className="w-4 h-4" /> Ver Código</a>)}
+              {project.repoLink && (<a href={project.repoLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-4 border border-white/10 text-white font-bold text-sm uppercase tracking-wider rounded-xl hover:bg-white/5 transition-all"><Github className="w-4 h-4" /> Ver Repositório</a>)}
               
               <div className="mt-6 space-y-6">
                 <div className="space-y-3">
