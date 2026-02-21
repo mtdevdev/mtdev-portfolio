@@ -39,7 +39,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       description: "Shooter tático Top-Down onde a manipulação do tempo é a mecânica central: o mundo só avança quando o jogador se move.",
       longDescription: "Splinteris é um Top-Down Shooter focado em precisão e estratégia, desenvolvido para explorar a manipulação de 'Time Scale' em tempo real dentro da Unity. A arquitetura do jogo vincula a simulação de física e a animação dos inimigos à magnitude do vetor de movimento do jogador, criando um sistema de 'tempo tático'. Além do desafio de sincronização via DeltaTime, o projeto implementa uma câmera dinâmica que calcula um offset baseado na posição do cursor, permitindo ao jogador antecipar perigos fora do centro da tela.",
       link: "https://mtdeveloper.itch.io/splinteris",
-      //repoLink: "https://github.com/mtdevdev",
+      repoLink: "https://github.com/mtdevdev/SPLINTERIS",
       isAvailable: true,
       type: "image",
       coverImage: "/assets/projects/splinteris/cover.jpg",
