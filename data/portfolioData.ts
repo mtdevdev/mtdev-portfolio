@@ -158,7 +158,7 @@ private IEnumerator ShakeRoutine(float intensity, float duration) {
       type: "image",
       coverImage: "/assets/projects/galactic-paradox/cover.jpg",
       videoPreviewUrl: "/assets/projects/galactic-paradox/preview.mp4",
-      role: "Solo Developer",
+      role: "Lead Programmer & Game Designer",
       teamSize: "2",
       techHighlights: [
         "Godot 3 (GDScript)",
