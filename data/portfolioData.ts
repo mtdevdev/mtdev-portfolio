@@ -45,7 +45,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       coverImage: "/assets/projects/splinteris/cover.jpg",
       videoPreviewUrl: "/assets/projects/splinteris/preview.mp4",
       role: "Solo Developer",
-      teamSize: "1 (Solo)",
+      teamSize: "1",
       techHighlights: [
         "Time Scaling via Input",
         "Offset de Câmera Dinâmico",
@@ -102,7 +102,7 @@ public class TimeManager : MonoBehaviour {
       coverImage: "/assets/projects/retro-rebound/cover.png",
       videoPreviewUrl: "/assets/projects/retro-rebound/preview.mp4",
       role: "Solo Developer",
-      teamSize: "1 (Solo)",
+      teamSize: "1",
       techHighlights: [
         "Sistema de Câmera Reativa",
         "Lógica Multiplayer Local",
@@ -159,7 +159,7 @@ private IEnumerator ShakeRoutine(float intensity, float duration) {
       coverImage: "/assets/projects/galactic-paradox/cover.jpg",
       videoPreviewUrl: "/assets/projects/galactic-paradox/preview.mp4",
       role: "Solo Developer",
-      teamSize: "1 (Solo)",
+      teamSize: "2",
       techHighlights: [
         "Godot 3 (GDScript)",
         "Lógica de Movimento Circular",
