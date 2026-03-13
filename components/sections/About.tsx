@@ -154,6 +154,8 @@ export const About: React.FC = () => {
                 </div>
             </div>
 
+            <div class="badge-base LI-profile-badge" data-locale="pt_BR" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="matheus-marçal-mtdev" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://br.linkedin.com/in/matheus-mar%C3%A7al-mtdev?trk=profile-badge">Matheus Marçal</a></div>
+
         </div>
       </div>
     </section>
