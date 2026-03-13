@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Code2, Layers, Cpu, Terminal, GraduationCap, Award, FileText, Globe, User } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../../data/portfolioData';
@@ -8,10 +7,27 @@ export const About: React.FC = () => {
   const [imgError, setImgError] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
+  // Observador de intersecção para animação
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) setIsVisible(true); }, { threshold: 0.15 });
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
+  }, []);
+
+  // Injeta o script do LinkedIn quando o componente é montado para garantir a renderização
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://platform.linkedin.com/badges/js/profile.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Limpeza opcional do script ao desmontar o componente
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
   }, []);
 
   // Extrai as iniciais para o fallback
@@ -60,9 +76,35 @@ export const About: React.FC = () => {
                 <p className="text-2xl md:text-3xl font-medium leading-relaxed text-neutral-200">{PORTFOLIO_DATA.bio.intro}</p>
                 <div className="h-px w-20 bg-accent-500/30"></div>
                 <p className="text-neutral-400 leading-loose text-lg">{PORTFOLIO_DATA.bio.description}</p>
-                <div className="pt-4">
-                  <a href={PORTFOLIO_DATA.resumeUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-3 border border-white/10 bg-white/5 hover:bg-accent-500/10 hover:border-accent-500/30 text-accent-400 font-tech text-xs tracking-widest uppercase rounded-xl transition-all"><FileText className="w-4 h-4" /> Visualizar Currículo</a>
+                
+                {/* Ações e LinkedIn Badge */}
+                <div className="pt-4 flex flex-col items-start gap-8">
+                  {/* Botão Currículo */}
+                  <a href={PORTFOLIO_DATA.resumeUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-3 border border-white/10 bg-white/5 hover:bg-accent-500/10 hover:border-accent-500/30 text-accent-400 font-tech text-xs tracking-widest uppercase rounded-xl transition-all">
+                    <FileText className="w-4 h-4" /> Visualizar Currículo
+                  </a>
+                  
+                  {/* Badge do LinkedIn */}
+                  <div className="w-full max-w-[300px]">
+                    <div 
+                      className="badge-base LI-profile-badge" 
+                      data-locale="pt_BR" 
+                      data-size="medium" 
+                      data-theme="dark" 
+                      data-type="VERTICAL" 
+                      data-vanity="matheus-marçal-mtdev" 
+                      data-version="v1"
+                    >
+                      <a 
+                        className="badge-base__link LI-simple-link" 
+                        href="https://br.linkedin.com/in/matheus-mar%C3%A7al-mtdev?trk=profile-badge"
+                      >
+                        Matheus Marçal
+                      </a>
+                    </div>
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -153,8 +195,6 @@ export const About: React.FC = () => {
                     ))}
                 </div>
             </div>
-
-            <div class="badge-base LI-profile-badge" data-locale="pt_BR" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="matheus-marçal-mtdev" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://br.linkedin.com/in/matheus-mar%C3%A7al-mtdev?trk=profile-badge">Matheus Marçal</a></div>
 
         </div>
       </div>
