@@ -67,7 +67,7 @@ export interface PortfolioData {
     description: string;
     profileImage: string;
   };
-  availability: string;
+  availability?: string;
   socials: SocialLink[];
   stack: TechStack[];
   projects: Project[];

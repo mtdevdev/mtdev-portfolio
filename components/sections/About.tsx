@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Code2, Layers, Cpu, Terminal, GraduationCap, Award, FileText, Globe, User } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../../data/portfolioData';
+import SpotlightCard from '../SpotlightCard';
 
 export const About: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -70,13 +71,13 @@ export const About: React.FC = () => {
             <h2 className="text-sm font-tech tracking-[0.3em] text-white/40 uppercase flex items-center gap-2"><Cpu className="w-4 h-4" /> Tech Stack</h2>
             <div className="grid grid-cols-1 gap-4">
               {PORTFOLIO_DATA.stack.map((item) => (
-                <div key={item.category} className="group p-6 border border-basalt bg-neutral-900/40 flex items-center gap-4 hover:border-accent-500/20 hover:bg-accent-950/5 transition-all duration-300 rounded-2xl">
-                  <div className="p-3 bg-white/5 border border-white/10 text-accent-400 rounded-xl">{item.icon === 'code' ? <Code2 className="w-5 h-5" /> : <Layers className="w-5 h-5" />}</div>
-                  <div>
+                <SpotlightCard key={item.category} className="group p-6 border border-basalt bg-neutral-900/40 flex items-center gap-4 hover:border-accent-500/20 hover:bg-accent-950/5 transition-all duration-300 rounded-2xl">
+                  <div className="p-3 bg-white/5 border border-white/10 text-accent-400 rounded-xl relative z-10">{item.icon === 'code' ? <Code2 className="w-5 h-5" /> : <Layers className="w-5 h-5" />}</div>
+                  <div className="relative z-10">
                     <h3 className="font-tech text-xs tracking-widest text-white uppercase mb-1">{item.category}</h3>
                     <p className="text-sm text-neutral-400">{item.items}</p>
                   </div>
-                </div>
+                </SpotlightCard>
               ))}
             </div>
           </div>
@@ -90,10 +91,10 @@ export const About: React.FC = () => {
                 <h3 className="text-sm font-tech tracking-[0.2em] text-neutral-500 uppercase flex items-center gap-2">
                     <GraduationCap className="w-4 h-4 text-accent-500" /> Formação Acadêmica
                 </h3>
-                <div className="space-y-8 pl-2">
+                <div className="pl-2">
                     {PORTFOLIO_DATA.education.map((edu, idx) => (
-                        <div key={idx} className="relative pl-6 border-l border-white/10 hover:border-accent-500/50 transition-colors group">
-                            <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-neutral-800 border border-white/20 group-hover:border-accent-500 group-hover:bg-accent-500/20 transition-all" />
+                        <div key={idx} className="relative pl-6 pb-8 border-l border-white/10 transition-colors group last:pb-0">
+                            <div className="absolute -left-[5.5px] top-1.5 w-2.5 h-2.5 rounded-full bg-neutral-800 border border-white/20 group-hover:border-accent-500 group-hover:bg-accent-500/20 transition-all" />
                             <h4 className="text-white font-bold text-lg">{edu.degree}</h4>
                             <p className="text-accent-400 text-sm mt-1">{edu.school}</p>
                             <p className="text-neutral-500 text-xs font-mono mt-2 uppercase tracking-wide">{edu.date}</p>
@@ -119,18 +120,18 @@ export const About: React.FC = () => {
                 </h3>
                 <div className="space-y-3">
                     {PORTFOLIO_DATA.certificates.map((cert, idx) => (
-                        <div 
+                        <SpotlightCard 
                           key={idx} 
-                          className="block p-4 bg-white/5 border border-white/5 rounded-xl hover:bg-white/10 hover:border-accent-500/30 transition-all group cursor-default"
+                          className="block p-4 border border-basalt bg-neutral-900/40 hover:border-accent-500/20 hover:bg-accent-950/5 transition-all duration-300 rounded-2xl group cursor-default"
                         >
-                            <div className="flex justify-between items-start gap-4">
+                            <div className="flex justify-between items-start gap-4 relative z-10">
                                 <div>
                                     <h4 className="text-white text-sm font-bold group-hover:text-accent-400 transition-colors">{cert.name}</h4>
                                     <p className="text-neutral-500 text-xs mt-1">{cert.issuer}</p>
                                 </div>
                                 <span className="text-neutral-600 text-[10px] font-mono whitespace-nowrap bg-black/20 px-2 py-1 rounded">{cert.date}</span>
                             </div>
-                        </div>
+                        </SpotlightCard>
                     ))}
                 </div>
             </div>
@@ -142,14 +143,14 @@ export const About: React.FC = () => {
                 </h3>
                 <div className="space-y-4">
                     {PORTFOLIO_DATA.languages.map((lang, idx) => (
-                        <div key={idx} className="flex items-center justify-between p-4 bg-neutral-900/30 border border-white/5 rounded-xl">
-                            <div className="flex items-center gap-3">
+                        <SpotlightCard key={idx} className="flex items-center justify-between p-4 bg-neutral-900/30 border border-white/5 rounded-xl">
+                            <div className="flex items-center gap-3 relative z-10">
                                 <span className="text-white font-medium text-sm">{lang.name}</span>
                             </div>
-                            <span className="px-2 py-1 bg-white/5 border border-white/10 text-neutral-400 text-[10px] uppercase tracking-wider rounded">
+                            <span className="px-2 py-1 bg-white/5 border border-white/10 text-neutral-400 text-[10px] uppercase tracking-wider rounded relative z-10">
                                 {lang.level}
                             </span>
-                        </div>
+                        </SpotlightCard>
                     ))}
                 </div>
             </div>

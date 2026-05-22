@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer ref={footerRef} className="py-20 border-t border-basalt bg-neutral-900/10">
+    <footer id="contact" ref={footerRef} className="py-20 border-t border-basalt bg-neutral-900/10">
       <div className={`max-w-7xl mx-auto px-6 text-center space-y-12 reveal ${isVisible ? 'active' : ''}`}>
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter">Vamos construir o próximo nível?</h2>
         <div className="flex flex-col items-center gap-4">

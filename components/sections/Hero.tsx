@@ -24,10 +24,6 @@ export const Hero: React.FC = () => {
     <section id="hero" className="min-h-screen flex flex-col justify-center items-center px-6 pt-20 overflow-hidden relative">
       <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-accent-500/5 rounded-full blur-[100px] -z-10 pointer-events-none" style={{ transform: `translate(-50%, calc(-50% + ${scrollY * 0.5}px))` }} />
       <div className="max-w-7xl w-full text-center space-y-8 relative z-10">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-white/10 rounded-full bg-neutral-900/50" style={{ transform: `translateY(${scrollY * -0.2}px)` }}>
-          <span className="w-2 h-2 rounded-full bg-accent-500 animate-pulse-slow"></span>
-          <span className="text-[10px] font-tech uppercase tracking-[0.2em] text-neutral-400">{PORTFOLIO_DATA.availability}</span>
-        </div>
         <div className="space-y-4" style={{ transform: `translateY(${scrollY * 0.2}px)` }}>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tighter">{PORTFOLIO_DATA.name}</h1>
           <p className="font-tech text-neutral-500 tracking-[0.4em] text-sm md:text-base uppercase">{PORTFOLIO_DATA.role}</p>
@@ -43,9 +39,9 @@ export const Hero: React.FC = () => {
         <div className="flex justify-center gap-8 pt-12" style={{ transform: `translateY(${scrollY * 0.05}px)` }}>
           {PORTFOLIO_DATA.socials.map((social) => (social.platform !== 'Email' && (
             <a key={social.platform} href={social.url} target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-white transition-colors">
-                {social.icon === 'github' && <Github />}
-                {social.icon === 'linkedin' && <Linkedin />}
-                {social.icon === 'gamepad' && <Gamepad2 />}
+              {social.icon === 'github' && <Github />}
+              {social.icon === 'linkedin' && <Linkedin />}
+              {social.icon === 'gamepad' && <Gamepad2 />}
             </a>
           )))}
         </div>

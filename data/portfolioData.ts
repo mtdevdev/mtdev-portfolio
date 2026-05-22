@@ -3,13 +3,12 @@ import { PortfolioData } from '../types/portfolio';
 
 export const PORTFOLIO_DATA: PortfolioData = {
   name: "Matheus Barboza Marçal",
-  role: "Developer & Designer",
+  role: "Game Developer",
   location: "Itu, SP, Brasil",
   resumeUrl: "/assets/documents/cv.pdf",
-  availability: "Trabalho Remoto e Presencial",
   bio: {
-    intro: "Desenvolvedor focado em C# e Unity, especializando na criação de mecânicas de jogo responsivas e arquitetura de código escalável.",
-    description: "Com uma abordagem analítica e criativa, dedico-me a transformar conceitos de Game Design em sistemas lógicos robustos. Meus projetos demonstram aplicação prática de Programação Orientada a Objetos (POO), Design Patterns e otimização de performance. Busco integrar times de desenvolvimento onde possa contribuir com soluções técnicas eficientes, mantendo o foco na 'game feel' e na qualidade final da experiência do usuário.",
+    intro: "Desenvolvedor de jogos focado em C# e Unity, buscando sempre criar mecânicas fluidas, polimento visual e códigos bem estruturados.",
+    description: "Sou apaixonado por dar vida a ideias através de código e interatividade. Dedico-me a programar a física de jogo, inteligência artificial de inimigos, sistemas de câmera e efeitos visuais ('juice/game feel') que tornam a jogabilidade satisfatória. Meus projetos refletem o estudo constante de boas práticas em C# e Unity, e estou sempre em busca de novos desafios em equipes de desenvolvimento para criar experiências de jogo incríveis.",
     profileImage: "/assets/images/profile.jpg"
   },
   socials: [
@@ -20,14 +19,14 @@ export const PORTFOLIO_DATA: PortfolioData = {
   ],
   stack: [
     {
-      category: "Núcleo & Scripts",
+      category: "Linguagens de Programação",
       icon: "code",
-      items: "C# (Intermediário) / Python (Básico) / Lógica de Algoritmos"
+      items: "C# (Intermediário) / Python (Básico) / Lógica de Programação"
     },
     {
       category: "Engines & Ferramentas",
       icon: "layers",
-      items: "Unity 3D/2D / Unreal Engine / Git & GitHub"
+      items: "Unity (2D/3D) / Godot Engine / Git & GitHub"
     }
   ],
   projects: [
@@ -37,7 +36,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       date: "DEZEMBRO 2025",
       engine: "Unity",
       description: "Shooter tático Top-Down onde a manipulação do tempo é a mecânica central: o mundo só avança quando o jogador se move.",
-      longDescription: "SPLINTERIS é um Top-Down Shooter focado em precisão e estratégia, desenvolvido para explorar a manipulação de 'Time Scale' em tempo real dentro da Unity. A arquitetura do jogo vincula a simulação de física e a animação dos inimigos à magnitude do vetor de movimento do jogador, criando um sistema de 'tempo tático'. Além do desafio de sincronização via DeltaTime, o projeto implementa uma câmera dinâmica que calcula um offset baseado na posição do cursor, permitindo ao jogador antecipar perigos fora do centro da tela.",
+      longDescription: "SPLINTERIS é um shooter top-down onde o tempo avança apenas quando o jogador se move (inspirado em Superhot). Desenvolvido na Unity, implementei um sistema de Time Scale que varia de forma dinâmica com o input de movimento do jogador, ajustando fisicamente o comportamento e animações dos inimigos em tempo real. O jogo também conta com IA de inimigos usando máquinas de estado, e uma câmera preditiva que se desloca em direção ao cursor para ampliar a visão do campo de batalha.",
       link: "https://mtdeveloper.itch.io/splinteris",
       repoLink: "https://github.com/mtdevdev/SPLINTERIS",
       isAvailable: true,
@@ -95,7 +94,7 @@ public class TimeManager : MonoBehaviour {
       date: "JULHO 2025",
       engine: "Unity",
       description: "Pong multiplayer local com sistema de fases evolutivas baseadas na vida dos jogadores e efeitos visuais reativos.",
-      longDescription: "Arcade competitivo local desenvolvido para explorar feedbacks visuais progressivos ('Juiciness'). A arquitetura gerencia três fases distintas de jogo controladas por eventos de vida, alterando dinamicamente o pós-processamento, a paleta de cores e o comportamento da câmera. O projeto destaca o uso avançado de Post-Processing Stack e shaders personalizados para transições de estilo (Pixel Art para Clean) em tempo real, além de um sistema de input flexível para dois jogadores no mesmo teclado.",
+      longDescription: "Um jogo de arcade competitivo para dois jogadores no mesmo teclado, focado em trazer o máximo de polimento visual ('juiciness'). O jogo possui 3 fases evolutivas que alteram o pós-processamento, a paleta de cores e o comportamento da câmera à medida que a vida dos jogadores diminui. Desenvolvido na Unity, usei Shader Graph para criar efeitos de pixelização em tempo real e um sistema de camera shake dinâmico que responde ao impacto da bola.",
       link: "https://mtdeveloper.itch.io/retro-rebound",
       isAvailable: true,
       type: "image",
@@ -208,6 +207,12 @@ func _physics_process(delta):
     }
   ],
   education: [
+    {
+      school: "UTFPR (Universidade Tecnológica Federal do Paraná)",
+      degree: "Bacharelado em Engenharia da Computação",
+      date: "Ago 2026 - Jul 2031 (Previsão)",
+      achievements: []
+    },
     {
       school: "Estação Dona Catarina",
       degree: "Ensino Médio Técnico em Administração",
