@@ -31,3 +31,7 @@ All portfolio content (bio, stack, projects) lives in `data/portfolioData.ts` as
 npm run build
 npm run preview
 ```
+
+## License
+
+The source code in this repository is licensed under MIT. This does not extend to personal content, including my name, photo, resume, bio, and project media under `data/portfolioData.ts` and `public/assets/`, which are not licensed for reuse.
