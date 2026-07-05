@@ -1,15 +1,15 @@
 import React, { useRef } from 'react';
 import './SpotlightCard.css';
 
-interface SpotlightCardProps extends React.PropsWithChildren {
-  className?: string;
+interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
   spotlightColor?: string;
 }
 
 const SpotlightCard: React.FC<SpotlightCardProps> = ({
   children,
   className = '',
-  spotlightColor = 'rgba(16, 185, 129, 0.25)'
+  spotlightColor = 'rgba(16, 185, 129, 0.25)',
+  ...props
 }) => {
   const divRef = useRef<HTMLDivElement>(null);
 
@@ -26,7 +26,12 @@ const SpotlightCard: React.FC<SpotlightCardProps> = ({
   };
 
   return (
-    <div ref={divRef} onMouseMove={handleMouseMove} className={`card-spotlight ${className}`}>
+    <div 
+      ref={divRef} 
+      onMouseMove={handleMouseMove} 
+      className={`card-spotlight ${className}`}
+      {...props}
+    >
       {children}
     </div>
   );

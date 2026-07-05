@@ -1,7 +1,7 @@
 
 export interface CodeSnippet {
   title: string;
-  language: 'csharp' | 'gdscript' | 'cpp';
+  language: 'csharp' | 'gdscript' | 'cpp' | 'python';
   code: string;
 }
 
@@ -9,7 +9,7 @@ export interface Project {
   id: string;
   title: string;
   date: string;
-  engine: 'Unity' | 'Godot' | 'Unreal';
+  engine: string;
   description: string;
   link?: string;
   repoLink?: string;

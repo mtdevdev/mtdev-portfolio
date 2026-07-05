@@ -1,12 +1,14 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Code2, Layers, Cpu, Terminal, GraduationCap, Award, FileText, Globe, User } from 'lucide-react';
-import { PORTFOLIO_DATA } from '../../data/portfolioData';
+import { Code2, Layers, Cpu, Terminal, GraduationCap, Award, FileText, Globe, User, Plus } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 import SpotlightCard from '../SpotlightCard';
 
 export const About: React.FC = () => {
+  const { portfolioData, t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const [showAllCertificates, setShowAllCertificates] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,51 +28,44 @@ export const About: React.FC = () => {
         {/* Top Section: Bio & Stack */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
           <div className={`md:col-span-7 space-y-8 reveal ${isVisible ? 'active' : ''}`}>
-            <h2 className="text-sm font-tech tracking-[0.3em] text-accent-500/80 uppercase flex items-center gap-2"><Terminal className="w-4 h-4" /> Perfil Profissional</h2>
+            <h2 className="text-sm font-tech tracking-[0.3em] text-accent-500/80 uppercase flex items-center gap-2"><Terminal className="w-4 h-4" /> {t.aboutTitle}</h2>
             <div className="flex flex-col sm:flex-row gap-8 items-start">
               
               {/* Profile Image System */}
-              <div className="shrink-0 group relative">
-                <div className="w-32 h-32 md:w-40 md:h-40 bg-neutral-800 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden relative shadow-2xl transition-all duration-500 group-hover:border-accent-500/50">
+              <div className="shrink-0">
+                <div className="w-32 h-32 md:w-40 md:h-40 bg-neutral-800 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden relative shadow-2xl">
                   {!imgError ? (
                     <img 
-                      src={PORTFOLIO_DATA.bio.profileImage} 
-                      alt={PORTFOLIO_DATA.name} 
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                      src={portfolioData.bio.profileImage} 
+                      alt={portfolioData.name} 
+                      className="absolute inset-0 w-full h-full object-cover" 
                       onError={() => setImgError(true)}
                     />
                   ) : (
                     <div className="flex flex-col items-center justify-center bg-neutral-900 w-full h-full">
-                       <User className="w-10 h-10 text-neutral-600 mb-2 group-hover:text-accent-500 transition-colors" />
-                       <span className="font-tech text-xl font-bold text-neutral-500 tracking-widest group-hover:text-white transition-colors">
-                         {getInitials(PORTFOLIO_DATA.name)}
+                       <User className="w-10 h-10 text-neutral-600 mb-2" />
+                       <span className="font-tech text-xl font-bold text-neutral-500 tracking-widest">
+                         {getInitials(portfolioData.name)}
                        </span>
                     </div>
                   )}
-                  
-                  {/* Overlay Tech Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-accent-500/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 </div>
-                {/* Decorative Elements around image */}
-                <div className="absolute -top-2 -right-2 w-6 h-6 border-t border-r border-accent-500/30 rounded-tr-lg opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b border-l border-accent-500/30 rounded-bl-lg opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
               </div>
 
               <div className="space-y-6">
-                <p className="text-2xl md:text-3xl font-medium leading-relaxed text-neutral-200">{PORTFOLIO_DATA.bio.intro}</p>
+                <p className="text-2xl md:text-3xl font-medium leading-relaxed text-neutral-200">{portfolioData.bio.intro}</p>
                 <div className="h-px w-20 bg-accent-500/30"></div>
-                <p className="text-neutral-400 leading-loose text-lg">{PORTFOLIO_DATA.bio.description}</p>
+                <p className="text-neutral-400 leading-loose text-lg">{portfolioData.bio.description}</p>
                 <div className="pt-4">
-                  <a href={PORTFOLIO_DATA.resumeUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-3 border border-white/10 bg-white/5 hover:bg-accent-500/10 hover:border-accent-500/30 text-accent-400 font-tech text-xs tracking-widest uppercase rounded-xl transition-all"><FileText className="w-4 h-4" /> Visualizar Currículo</a>
+                  <a href={portfolioData.resumeUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-3 border border-white/10 bg-white/5 hover:bg-accent-500/10 hover:border-accent-500/30 text-accent-400 font-tech text-xs tracking-widest uppercase rounded-xl transition-all"><FileText className="w-4 h-4" /> {t.aboutViewResume}</a>
                 </div>
               </div>
             </div>
           </div>
           <div className={`md:col-span-5 space-y-8 reveal delay-200 ${isVisible ? 'active' : ''}`}>
-            <h2 className="text-sm font-tech tracking-[0.3em] text-white/40 uppercase flex items-center gap-2"><Cpu className="w-4 h-4" /> Tech Stack</h2>
+            <h2 className="text-sm font-tech tracking-[0.3em] text-white/40 uppercase flex items-center gap-2"><Cpu className="w-4 h-4" /> {t.aboutTechStack}</h2>
             <div className="grid grid-cols-1 gap-4">
-              {PORTFOLIO_DATA.stack.map((item) => (
+              {portfolioData.stack.map((item) => (
                 <SpotlightCard key={item.category} className="group p-6 border border-basalt bg-neutral-900/40 flex items-center gap-4 hover:border-accent-500/20 hover:bg-accent-950/5 transition-all duration-300 rounded-2xl">
                   <div className="p-3 bg-white/5 border border-white/10 text-accent-400 rounded-xl relative z-10">{item.icon === 'code' ? <Code2 className="w-5 h-5" /> : <Layers className="w-5 h-5" />}</div>
                   <div className="relative z-10">
@@ -89,10 +84,10 @@ export const About: React.FC = () => {
             {/* Education Column */}
             <div className="space-y-8">
                 <h3 className="text-sm font-tech tracking-[0.2em] text-neutral-500 uppercase flex items-center gap-2">
-                    <GraduationCap className="w-4 h-4 text-accent-500" /> Formação Acadêmica
+                    <GraduationCap className="w-4 h-4 text-accent-500" /> {t.aboutEducation}
                 </h3>
                 <div className="pl-2">
-                    {PORTFOLIO_DATA.education.map((edu, idx) => (
+                    {portfolioData.education.map((edu, idx) => (
                         <div key={idx} className="relative pl-6 pb-8 border-l border-white/10 transition-colors group last:pb-0">
                             <div className="absolute -left-[5.5px] top-1.5 w-2.5 h-2.5 rounded-full bg-neutral-800 border border-white/20 group-hover:border-accent-500 group-hover:bg-accent-500/20 transition-all" />
                             <h4 className="text-white font-bold text-lg">{edu.degree}</h4>
@@ -116,33 +111,63 @@ export const About: React.FC = () => {
             {/* Certificates Column */}
             <div className="space-y-8">
                 <h3 className="text-sm font-tech tracking-[0.2em] text-neutral-500 uppercase flex items-center gap-2">
-                    <Award className="w-4 h-4 text-accent-500" /> Certificações & Cursos
+                    <Award className="w-4 h-4 text-accent-500" /> {t.aboutCertificates}
                 </h3>
-                <div className="space-y-3">
-                    {PORTFOLIO_DATA.certificates.map((cert, idx) => (
-                        <SpotlightCard 
-                          key={idx} 
-                          className="block p-4 border border-basalt bg-neutral-900/40 hover:border-accent-500/20 hover:bg-accent-950/5 transition-all duration-300 rounded-2xl group cursor-default"
+                <div className="flex flex-col">
+                    {portfolioData.certificates.map((cert, idx) => {
+                        const isHidden = idx >= 3 && !showAllCertificates;
+                        return (
+                            <div 
+                              key={idx}
+                              className="transition-all duration-500 ease-out origin-top"
+                              style={{
+                                maxHeight: isHidden ? '0px' : '150px',
+                                opacity: isHidden ? 0 : 1,
+                                transform: isHidden ? 'scaleY(0.8) translateY(-10px)' : 'scaleY(1) translateY(0)',
+                                marginBottom: isHidden ? '0px' : '12px',
+                                pointerEvents: isHidden ? 'none' : 'auto',
+                                overflow: 'hidden',
+                                transitionDelay: !isHidden && showAllCertificates && idx >= 3 ? `${(idx - 3) * 80}ms` : '0ms'
+                              }}
+                            >
+                                <SpotlightCard 
+                                  className="block p-4 border border-basalt bg-neutral-900/40 hover:border-accent-500/20 hover:bg-accent-950/5 transition-all duration-300 rounded-2xl group cursor-default"
+                                >
+                                    <div className="flex justify-between items-start gap-4 relative z-10">
+                                        <div>
+                                            <h4 className="text-white text-sm font-bold group-hover:text-accent-400 transition-colors">{cert.name}</h4>
+                                            <p className="text-neutral-500 text-xs mt-1">{cert.issuer}</p>
+                                        </div>
+                                        <span className="text-neutral-600 text-[10px] font-mono whitespace-nowrap bg-black/20 px-2 py-1 rounded">{cert.date}</span>
+                                    </div>
+                                </SpotlightCard>
+                            </div>
+                        );
+                    })}
+                    
+                    {portfolioData.certificates.length > 3 && (
+                        <SpotlightCard
+                          onClick={() => setShowAllCertificates(!showAllCertificates)}
+                          className="p-4 border border-dashed border-white/10 hover:border-accent-500/50 bg-neutral-900/20 hover:bg-accent-950/5 transition-all duration-300 rounded-2xl group flex items-center justify-center gap-2 cursor-pointer relative z-10"
                         >
-                            <div className="flex justify-between items-start gap-4 relative z-10">
-                                <div>
-                                    <h4 className="text-white text-sm font-bold group-hover:text-accent-400 transition-colors">{cert.name}</h4>
-                                    <p className="text-neutral-500 text-xs mt-1">{cert.issuer}</p>
-                                </div>
-                                <span className="text-neutral-600 text-[10px] font-mono whitespace-nowrap bg-black/20 px-2 py-1 rounded">{cert.date}</span>
+                            <div className="flex items-center gap-2 relative z-10 text-neutral-400 group-hover:text-white transition-colors">
+                                <Plus className={`w-4 h-4 text-accent-400 group-hover:scale-110 transition-all duration-500 ${showAllCertificates ? 'rotate-45 text-neutral-500' : ''}`} />
+                                <span className="text-xs font-tech tracking-widest uppercase">
+                                    {showAllCertificates ? t.aboutShowLess : t.aboutMoreCertificates(portfolioData.certificates.length - 3)}
+                                </span>
                             </div>
                         </SpotlightCard>
-                    ))}
+                    )}
                 </div>
             </div>
 
             {/* Languages Column */}
             <div className="space-y-8">
                 <h3 className="text-sm font-tech tracking-[0.2em] text-neutral-500 uppercase flex items-center gap-2">
-                    <Globe className="w-4 h-4 text-accent-500" /> Idiomas
+                    <Globe className="w-4 h-4 text-accent-500" /> {t.aboutLanguages}
                 </h3>
                 <div className="space-y-4">
-                    {PORTFOLIO_DATA.languages.map((lang, idx) => (
+                    {portfolioData.languages.map((lang, idx) => (
                         <SpotlightCard key={idx} className="flex items-center justify-between p-4 bg-neutral-900/30 border border-white/5 rounded-xl">
                             <div className="flex items-center gap-3 relative z-10">
                                 <span className="text-white font-medium text-sm">{lang.name}</span>

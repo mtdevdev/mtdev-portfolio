@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { X, Github, Cpu, Users, Calendar, Gamepad2, FileCode, ImageIcon } from 'lucide-react';
 import { Project } from '../../types/portfolio';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface ProjectModalProps {
   project: Project;
@@ -9,6 +10,8 @@ interface ProjectModalProps {
 }
 
 export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
+  const { t } = useLanguage();
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => { document.body.style.overflow = 'unset'; };
@@ -60,7 +63,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
             {/* Description */}
             <div className="space-y-4">
-              <h3 className="text-lg font-tech text-white uppercase tracking-widest flex items-center gap-2"><span className="w-1 h-4 bg-accent-500 rounded-full"></span> Sobre o Projeto</h3>
+              <h3 className="text-lg font-tech text-white uppercase tracking-widest flex items-center gap-2"><span className="w-1 h-4 bg-accent-500 rounded-full"></span> {t.modalAboutProject}</h3>
               <p className="text-neutral-300 leading-loose text-base md:text-lg">{project.longDescription || project.description}</p>
             </div>
 
@@ -81,16 +84,16 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             {/* Gallery Section */}
             {allGalleryImages.length > 0 && (
               <div className="space-y-6">
-                 <h3 className="text-lg font-tech text-white uppercase tracking-widest flex items-center gap-2"><ImageIcon className="w-4 h-4 text-accent-500" /> Galeria</h3>
+                 <h3 className="text-lg font-tech text-white uppercase tracking-widest flex items-center gap-2"><ImageIcon className="w-4 h-4 text-accent-500" /> {t.modalGallery}</h3>
                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {allGalleryImages.map((img, idx) => (
-                      <div key={idx} className="aspect-video bg-neutral-900 rounded-xl overflow-hidden border border-white/5 hover:border-white/20 transition-colors group relative">
-                        <img 
-                          src={img} 
-                          alt={`${project.title} gallery ${idx + 1}`} 
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
+                       <div key={idx} className="aspect-video bg-neutral-900 rounded-xl overflow-hidden border border-white/5 hover:border-white/20 transition-colors group relative">
+                         <img 
+                           src={img} 
+                           alt={`${project.title} gallery ${idx + 1}`} 
+                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                         />
+                       </div>
                     ))}
                  </div>
               </div>
@@ -100,29 +103,29 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           {/* Sidebar Info */}
           <div className="lg:col-span-4 space-y-8">
             <div className="flex flex-col gap-3 p-6 bg-neutral-900/50 rounded-2xl border border-white/5 sticky top-24">
-              {project.isAvailable && project.link && (<a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-4 bg-white text-black font-bold text-sm uppercase tracking-wider rounded-xl hover:bg-neutral-200 transition-all shadow-lg"><Gamepad2 className="w-4 h-4" /> Ver Página</a>)}
-              {project.repoLink && (<a href={project.repoLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-4 border border-white/10 text-white font-bold text-sm uppercase tracking-wider rounded-xl hover:bg-white/5 transition-all"><Github className="w-4 h-4" /> Ver Repositório</a>)}
+              {project.isAvailable && project.link && (<a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-4 bg-white text-black font-bold text-sm uppercase tracking-wider rounded-xl hover:bg-neutral-200 transition-all shadow-lg"><Gamepad2 className="w-4 h-4" /> {t.modalViewPage}</a>)}
+              {project.repoLink && (<a href={project.repoLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-4 border border-white/10 text-white font-bold text-sm uppercase tracking-wider rounded-xl hover:bg-white/5 transition-all"><Github className="w-4 h-4" /> {t.modalViewRepo}</a>)}
               
               <div className="mt-6 space-y-6">
                 <div className="space-y-3">
-                    <div className="flex items-center gap-2 text-neutral-500 text-xs font-tech uppercase tracking-widest"><Cpu className="w-4 h-4" /> Tecnologia</div>
+                    <div className="flex items-center gap-2 text-neutral-500 text-xs font-tech uppercase tracking-widest"><Cpu className="w-4 h-4" /> {t.modalTechnology}</div>
                     <div className="flex flex-wrap gap-2">{project.techHighlights.map((tech, idx) => (<span key={idx} className="px-3 py-1.5 bg-accent-950/30 border border-accent-500/20 text-accent-400 text-xs rounded-lg">{tech}</span>))}</div>
                 </div>
                 <div className="h-px bg-white/5 w-full"></div>
                 <div className="space-y-1">
-                    <div className="flex items-center gap-2 text-neutral-500 text-xs font-tech uppercase tracking-widest"><Users className="w-4 h-4" /> Equipe</div>
+                    <div className="flex items-center gap-2 text-neutral-500 text-xs font-tech uppercase tracking-widest"><Users className="w-4 h-4" /> {t.modalTeam}</div>
                     <p className="text-white font-medium">{project.role}</p>
                     <p className="text-sm text-neutral-500">{project.teamSize}</p>
                 </div>
                 <div className="space-y-1">
-                    <div className="flex items-center gap-2 text-neutral-500 text-xs font-tech uppercase tracking-widest"><Calendar className="w-4 h-4" /> Período</div>
+                    <div className="flex items-center gap-2 text-neutral-500 text-xs font-tech uppercase tracking-widest"><Calendar className="w-4 h-4" /> {t.modalPeriod}</div>
                     <p className="text-white font-medium">{project.date}</p>
                 </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   );
 };

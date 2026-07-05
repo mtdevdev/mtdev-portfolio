@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Image, Video, ArrowRight, Plus } from 'lucide-react';
-import { PORTFOLIO_DATA } from '../../data/portfolioData';
+import { useLanguage } from '../../context/LanguageContext';
 import { Project } from '../../types/portfolio';
 import { ProjectModal } from '../projects/ProjectModal';
 
@@ -12,6 +12,7 @@ const ProjectCard: React.FC<{
   isVisible: boolean; 
   onClick: (project: Project) => void;
 }> = ({ project, index, isVisible, onClick }) => {
+  const { t } = useLanguage();
   const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -79,7 +80,7 @@ const ProjectCard: React.FC<{
                           transition-all duration-500 ease-out transform
                           ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
             <Plus className="w-3 h-3 text-accent-400" />
-            <span className="text-white text-[10px] font-bold uppercase tracking-widest">Clique para mais detalhes</span>
+            <span className="text-white text-[10px] font-bold uppercase tracking-widest">{t.projectHoverDetails}</span>
           </div>
         </div>
 
@@ -97,6 +98,7 @@ const ProjectCard: React.FC<{
 };
 
 export const Projects: React.FC = () => {
+  const { portfolioData, t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -112,20 +114,22 @@ export const Projects: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className={`flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6 reveal ${isVisible ? 'active' : ''}`}>
           <div className="space-y-4">
-            <h2 className="text-sm font-tech tracking-[0.3em] text-white/40 uppercase">Portfólio</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Projetos Selecionados</h3>
+            <h2 className="text-sm font-tech tracking-[0.3em] text-white/40 uppercase">{t.projectsTitle}</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight">{t.projectsSubtitle}</h3>
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {PORTFOLIO_DATA.projects.map((project, index) => (
-            <ProjectCard 
-              key={project.id} 
-              project={project} 
-              index={index} 
-              isVisible={isVisible} 
-              onClick={setSelectedProject} 
-            />
-          ))}
+          {portfolioData.projects
+            .filter(project => project.id !== 'oxis-ai')
+            .map((project, index) => (
+              <ProjectCard 
+                key={project.id} 
+                project={project} 
+                index={index} 
+                isVisible={isVisible} 
+                onClick={setSelectedProject} 
+              />
+            ))}
         </div>
       </div>
       {selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}

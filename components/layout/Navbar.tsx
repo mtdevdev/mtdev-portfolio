@@ -1,8 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const Navbar: React.FC = () => {
+  const { t } = useLanguage();
   const [activeSection, setActiveSection] = useState('hero');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -47,9 +49,9 @@ export const Navbar: React.FC = () => {
   };
 
   const navLinks = [
-    { name: 'Home', href: '#hero' },
-    { name: 'Sobre', href: '#about' },
-    { name: 'Projetos', href: '#projects' },
+    { name: t.navHome, href: '#hero' },
+    { name: t.navAbout, href: '#about' },
+    { name: t.navProjects, href: '#projects' },
   ];
 
   return (
@@ -74,7 +76,7 @@ export const Navbar: React.FC = () => {
                 {link.name}
               </a>
             ))}
-            <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')} className="px-6 py-2 border border-white/10 hover:border-accent-500/50 transition-all bg-white/5 hover:bg-accent-950/20 rounded-full text-white">Contato</a>
+            <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')} className="px-6 py-2 border border-white/10 hover:border-accent-500/50 transition-all bg-white/5 hover:bg-accent-950/20 rounded-full text-white">{t.navContact}</a>
           </div>
           <button className="md:hidden z-50 text-white p-2 hover:bg-white/10 rounded-full transition-colors" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -92,7 +94,7 @@ export const Navbar: React.FC = () => {
             {link.name}
           </a>
         ))}
-        <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')} className="px-8 py-3 mt-4 border border-white/20 rounded-full text-accent-400 text-sm font-tech uppercase tracking-widest">Entre em Contato</a>
+        <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')} className="px-8 py-3 mt-4 border border-white/20 rounded-full text-accent-400 text-sm font-tech uppercase tracking-widest">{t.navContact}</a>
       </div>
     </>
   );
